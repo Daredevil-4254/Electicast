@@ -1,8 +1,8 @@
 # ELECTICAST VOTING PROJECT
 
 A blockchain-based E-voting system, created as the  project of TEZOS HACKETHON 
-team member - Priyanshu Tiwari
-              Ankit singh 
+team member - Priyanshu Tiwari ,
+              Ankit singh ,
               sakshi mishra 
 > 
 
