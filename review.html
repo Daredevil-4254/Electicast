@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Faculty Review in College</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      font-weight: bold;
+    }
+    
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    textarea {
+      height: 100px;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .review-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .review-item {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+    
+    .review-item .review-info {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .review-item .review-text {
+      margin-bottom: 0;
+    }
+    
+    .review-item:nth-child(even) {
+      background-color: #e6e6e6;
+    }
+    
+    .review-item:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+    
+    .review-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .review-list:before,
+    .review-list:after {
+      content: "";
+      display: table;
+    }
+    
+    .review-list:after {
+      clear: both;
+    }
+    
+    .review-list li {
+      float: left;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .review-list li:before,
+    .review-list li:after {
+      content: "";
+      display: table;
+    }
+    
+    .review-list li:after {
+      clear: both;
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Faculty Review in College</h1>
+  
+  <div class="container">
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="college">College</label>
+        <select id="college" required>
+          <option value="" disabled selected>Select College</option>
+          <option value="college1">REC REWA</option>
+          <option value="college2">HANSRAJ DU</option>
+          <option value="college3">OTHER</option>
+          <!-- Add more college options here -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="facultyName">Faculty Name</label>
+        <input type="text" id="facultyName" required>
+      </div>
+      <div class="form-group">
+        <label for="reviewText">Review</label>
+        <textarea id="reviewText" required></textarea>
+      </div>
+      <button type="submit">Submit Review</button>
+    </form>
+    
+    <h2>Reviews</h2>
+    <ul id="reviewList" class="review-list"></ul>
+  </div>
+  
+  <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var college = document.getElementById("college").value;
+      var facultyName = document.getElementById("facultyName").value;
+      var reviewText = document.getElementById("reviewText").value;
+      
+      if (college && facultyName && reviewText) {
+        var reviewItem = document.createElement("li");
+        reviewItem.className = "review-item";
+        
+        var reviewInfo = document.createElement("div");
+        reviewInfo.className = "review-info";
+        reviewInfo.textContent = "College: " + college + " | Faculty: " + facultyName;
+        
+        var reviewTextElem = document.createElement("p");
+        reviewTextElem.className = "review-text";
+        reviewTextElem.textContent = reviewText;
+        
+        reviewItem.appendChild(reviewInfo);
+        reviewItem.appendChild(reviewTextElem);
+        
+        document.getElementById("reviewList").appendChild(reviewItem);
+        
+        document.getElementById("college").value = "";
+        document.getElementById("facultyName").value = "";
+        document.getElementById("reviewText").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
