@@ -1,3 +1,4 @@
+import smartpy as sp
 class Voting(sp.Contract):
     def _init_(self, candidates):
         self.init(
